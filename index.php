@@ -20,14 +20,19 @@ function isOdd($number)
 
 function createMaze($size)
 {
+    //validate the input
     if ($size <= 0) {
         throw new Exception("must be positive number");
     }
-    
+
+    //current state
     $currentGate = 2;
     $last = $size - 1;
 
+    //print row
     for ($row = 1; $row <= $size; $row++) {
+
+        //print column
         for ($column = 1; $column <= $size; $column++) {
             if ((isEven($row) && $column > 1 && $column < $size)) {
                 echo " ";
@@ -38,6 +43,8 @@ function createMaze($size)
             }
         }
         echo "\n";
+
+        //switch the gate
         if (isOdd($row)) {
             $currentGate = $currentGate == 2 ? $last : 2;
         }
